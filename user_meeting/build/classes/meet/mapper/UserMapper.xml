@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="meet.mapper.UserMapper">
+<!-- id值对应接口类里的函数名  -->
+<insert id="Insertuser">
+ insert into user_t(user_id,user_name,real_name,user_password,user_phone,user_email,user_role,user_credit,if_in) values(#{user_id, jdbcType=INTEGER},#{user_name,jdbcType=VARCHAR},#{real_name,jdbcType=VARCHAR},#{user_password,jdbcType=VARCHAR},#{user_phone,jdbcType=VARCHAR},#{user_email,jdbcType=VARCHAR},#{user_role,jdbcType=INTEGER},#{user_credit,jdbcType=DOUBLE},#{if_in,jdbcType=INTEGER})
+ </insert>
+ 
+<delete id="Deleteuser" parameterType="int">
+delete from user_t where user_id=#{user_id}
+</delete>
+
+<update id="updateuser">
+ update user_t set user_name=#{user_name,jdbcType=VARCHAR},real_name=#{real_name,jdbcType=VARCHAR},user_password=#{user_password,jdbcType=VARCHAR},user_phone=#{user_phone,jdbcType=VARCHAR},user_email=#{user_email,jdbcType=VARCHAR} where user_id=#{user_id,jdbcType=INTEGER}
+</update>
+
+<select id="Searchuser" parameterType="int" resultType="Myuser">
+select * from user_t where user_id =#{user_id}
+</select>
+</mapper>
